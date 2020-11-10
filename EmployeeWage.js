@@ -36,6 +36,8 @@ function totalWages(totalWage, dailyWage) {
 let totalWorkingDays = 0;
 let totalEmpHrs = 0;
 let empWageArray = new Array();
+let empWageMap = new Map();
+
 //Calculating Wages till Number of Working Days or Total Working Hours per month is Reached
 while (totalWorkingDays < NO_OF_WORKING_DAYS && totalEmpHrs <= NO_OF_WORKING_HOURS) {
     let empCheck = Math.floor((Math.random() * 10) % 3);
@@ -43,6 +45,7 @@ while (totalWorkingDays < NO_OF_WORKING_DAYS && totalEmpHrs <= NO_OF_WORKING_HOU
     totalEmpHrs += empHrs;
     totalWorkingDays++;
     empWageArray.push(caclWage(empHrs));            // Save in an Array the Daily Wage
+    empWageMap.set(totalWorkingDays, caclWage(empHrs));  // Store the Day and the Daily Wage
 }
 
 console.log(empWageArray);
@@ -91,3 +94,8 @@ function totalDaysWorked(numOfDays, dailyWage) {
     return numOfDays;
 }
 console.log("Number of days the employee worked : " + empWageArray.reduce(totalDaysWorked, 0));
+
+// compute Total Wage using map 
+console.log(empWageMap);
+console.log("Total Employee wage using map : " + Array.from(empWageArray.values()).reduce(totalWages, 0));
+
