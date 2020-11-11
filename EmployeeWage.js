@@ -131,4 +131,26 @@ console.log("Full working days : " + fullWorkingDays);
 console.log("Part working days : " + partWorkingDays);
 console.log("Non working days : " + nonWorkingDays);
 
+{
+    // Ability to store the Day, Hours Worked and Wage Earned in a single object. 
+    let totalWorkingDays = 0;
+    let totalEmpHrs = 0;
+    let empDailyHrsAndWageArr = new Array();
+    while (totalWorkingDays < NO_OF_WORKING_DAYS && totalEmpHrs <= NO_OF_WORKING_HOURS) {
+        let empCheck = Math.floor((Math.random() * 10) % 3);
+        let empHrs = getWorkingHours(empCheck);
+        totalEmpHrs += empHrs;
+        totalWorkingDays++;
+        empDailyHrsAndWageArr.push({
+            dayNum: totalWorkingDays,
+            dailyHours: empHrs,
+            dailyWage: caclWage(empHrs),
+            toString() {
+                return "\nDay No : " + this.dayNum + "  Hours Worked: " + this.dailyHours + "  Wage Earned: " + this.dailyWage
+            },
+        });
 
+    }
+    console.log("Employee Daily Hours and wage : " + empDailyHrsAndWageArr);
+
+}
